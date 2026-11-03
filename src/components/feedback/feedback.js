@@ -21,7 +21,7 @@ export function createInfoBanner({ iconName, text, actionLabel, onAction }) {
  */
 export function createBottomSheet({ title, body, actionLabel, onAction, iconName, content }) {
   const titleId = `sheet-${Math.random().toString(36).slice(2, 8)}`;
-  const action = el('button', { class: 'btn-primary', onclick: onAction }, actionLabel);
+  const action = actionLabel && el('button', { class: 'btn-primary', onclick: onAction }, actionLabel);
   const panel = el(
     'div',
     { class: 'sheet__panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': titleId },
@@ -41,7 +41,7 @@ export function createBottomSheet({ title, body, actionLabel, onAction, iconName
   function open() {
     returnFocus = document.activeElement;
     gsap.fromTo(scrim, { opacity: 0 }, { opacity: 1, duration: duration() });
-    gsap.fromTo(panel, { yPercent: 100 }, { yPercent: 0, duration: duration(), ease: 'power2.out', onComplete: () => action.focus({ preventScroll: true }) });
+    gsap.fromTo(panel, { yPercent: 100 }, { yPercent: 0, duration: duration(), ease: 'power2.out', onComplete: () => (action || panel.querySelector('input:checked, button, input'))?.focus({ preventScroll: true }) });
   }
 
   function close() {

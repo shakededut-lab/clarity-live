@@ -34,16 +34,8 @@ function ring(progress, id) {
   );
 }
 
-function valueLabel({ value, target, unit }) {
-  if (!unit) {
-    return el('p', { class: 'goal-card__value' }, el('strong', {}, value), `/${target}`);
-  }
-  return el(
-    'p',
-    { class: 'goal-card__value goal-card__value--stacked' },
-    el('strong', {}, value, el('small', {}, unit)),
-    el('span', {}, target, el('small', {}, unit)),
-  );
+function valueLabel({ value, unit }) {
+  return el('p', { class: 'goal-card__value' }, el('strong', {}, value), unit && el('small', {}, unit));
 }
 
 export function createGoalCard(goal) {
@@ -57,6 +49,7 @@ export function createGoalCard(goal) {
       { class: 'goal-card__btn', 'aria-label': label },
       el('span', { class: 'goal-card__name' }, name),
       el('span', { class: 'goal-card__dial' }, ring(value / target, id), valueLabel(goal)),
+      el('span', { class: 'goal-card__target' }, `of ${target}${unit ? ' ' + unit : ''}`),
     ),
   );
 }

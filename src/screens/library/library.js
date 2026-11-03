@@ -39,18 +39,18 @@ export function renderLibrary(screen, { day, state, onRetry, onNavigate }) {
     sheet.open();
   }
 
+  /** Goal picker: one tap picks the goal and closes the sheet. No confirm button. */
   function openFilter() {
-    let choice = goal;
     const options = el('div', { class: 'goal-options', role: 'radiogroup', 'aria-label': 'Goal' },
       GOALS.map((g) => el('label', { class: 'goal-option' },
-        el('input', { type: 'radio', name: 'goal', value: g, checked: g === goal, onchange: () => (choice = g) }),
+        el('input', { type: 'radio', name: 'goal', value: g, checked: g === goal, onclick: () => pick(g) }),
         el('span', {}, g))));
-    const sheet = createBottomSheet({
-      title: 'What’s your goal today?',
-      content: options,
-      actionLabel: 'Show workouts',
-      onAction: () => { goal = choice; sheet.close(); drawList(); },
-    });
+    const sheet = createBottomSheet({ title: 'What’s your goal today?', content: options });
+    function pick(g) {
+      goal = g;
+      drawList();
+      setTimeout(sheet.close, 150); // short pause so the tap is seen
+    }
     screen.append(sheet.node);
     sheet.open();
   }

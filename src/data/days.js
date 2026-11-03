@@ -9,7 +9,7 @@ const shared = {
   goals: [
     { id: 'running', name: 'Running', value: 2, target: 4, unit: '' },
     { id: 'dancing', name: 'Dancing', value: 73, target: 100, unit: 'min' },
-    { id: 'walking', name: 'Walking Rex', value: 23, target: 90, unit: 'km' },
+    { id: 'walking', name: 'Walk Rex', value: 23, target: 90, unit: 'km' },
   ],
   rewards: [
     { id: 'meditate', title: 'Meditate', caption: 'Tap here!', state: 'open' },
