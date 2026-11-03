@@ -63,7 +63,7 @@
   --ease-soft: cubic-bezier(0.25, 0.8, 0.25, 1);
 
   /* Device */
-  --phone-w: 402px;
-  --phone-h: 874px;
+  --phone-w: 393px; /* iPhone 15 */
+  --phone-h: 852px;
   --tap: 44px;
 }

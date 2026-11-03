@@ -40,6 +40,7 @@ const ui = {
 
 const screen = el('div', { class: 'screen', tabindex: '-1', 'aria-live': 'off' });
 const phone = el('div', { class: 'phone' }, screen);
+const stage = el('div', { class: 'stage' }, phone);
 let view = null;
 
 function render() {
@@ -69,7 +70,26 @@ function retry() {
   }, 1800);
 }
 
-document.querySelector('#app').append(
-  el('div', { class: 'shell' }, createDemoPanel({ groups: DEMO_GROUPS, value: ui, onChange: update }), phone),
-);
+const shell = el('div', { class: 'shell' });
+const demoToggle = el('button', {
+  class: 'demo-toggle',
+  'aria-expanded': 'false',
+  onclick: () => {
+    const open = shell.classList.toggle('demo-open');
+    demoToggle.setAttribute('aria-expanded', open);
+    demoToggle.textContent = open ? 'Close demo' : 'Demo';
+  },
+}, 'Demo');
+shell.append(demoToggle, createDemoPanel({ groups: DEMO_GROUPS, value: ui, onChange: update }), stage);
+document.querySelector('#app').append(shell);
+
+/** On a computer, show the iPhone at real size, shrinking only if the window is too small. */
+const PHONE = { w: 393, h: 852, frame: 20, panel: 240 + 48 };
+function fitPhone() {
+  const byHeight = (window.innerHeight - 48 - PHONE.frame) / PHONE.h;
+  const byWidth = (window.innerWidth - 48 - PHONE.panel - PHONE.frame) / PHONE.w;
+  shell.style.setProperty('--scale', Math.min(1, byHeight, Math.max(byWidth, 0.5)).toFixed(3));
+}
+window.addEventListener('resize', fitPhone);
+fitPhone();
 render();

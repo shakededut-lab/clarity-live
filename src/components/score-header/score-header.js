@@ -7,7 +7,7 @@ import './score-header.css';
  * The whole score is a button: it opens "Go deeper" (the why behind the number).
  */
 export function createScoreHeader({ score, headline, mood, note, onOpen }) {
-  const companion = createCompanion({ size: 136, mood });
+  const companion = createCompanion({ size: 120, mood });
   const scoreText = score == null ? '–' : score;
 
   const button = el(

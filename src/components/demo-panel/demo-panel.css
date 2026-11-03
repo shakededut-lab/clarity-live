@@ -61,18 +61,9 @@
   outline-offset: 2px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 601px) {
   .demo {
     width: 240px;
-  }
-}
-
-@media (max-width: 480px) {
-  .demo {
-    padding: var(--space-3);
-  }
-  .demo__group {
-    display: inline-block;
-    margin-right: var(--space-3);
+    flex: none;
   }
 }
