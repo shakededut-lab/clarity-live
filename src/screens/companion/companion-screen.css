@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100%;
-  padding: 88px var(--space-4) var(--space-1);
+  padding: 88px var(--space-4) 120px;
   background: linear-gradient(180deg, var(--bg-light) 0%, #fdf3c4 100%);
   text-align: center;
 }
@@ -20,14 +20,30 @@
 
 .companion-screen__stage {
   position: relative;
-  margin-top: var(--space-5);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+/* Small mood chip above the insight, so the day reads at a glance */
+.companion-screen__mood {
+  margin-bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: rgba(251, 244, 207, 0.9);
+  box-shadow: var(--shadow-card);
+  font-size: var(--fs-sm);
+  font-weight: 700;
 }
 
 /* Speech bubble with the gradient border from the Figma */
 .companion-screen__talk {
   position: absolute;
-  top: 24px;
+  top: calc(50% - 150px + 64px);
   right: -16px;
+  max-width: 180px;
   min-height: var(--tap);
   padding: var(--space-3) var(--space-3);
   border: 2px solid transparent;
@@ -42,6 +58,7 @@
 
 .companion-screen__beams {
   margin-top: var(--space-4);
+  flex: none;
   min-height: 48px;
   padding: 0 var(--space-4);
   border-radius: var(--radius-pill);
@@ -56,10 +73,4 @@
 
 .companion-screen[data-state='offline'] > :not(.nav-bar) {
   opacity: 0.6;
-}
-
-/* Keep the floating nav at the bottom even when content is short */
-.companion-screen .nav-bar {
-  margin-top: auto;
-  padding-top: var(--space-5);
 }

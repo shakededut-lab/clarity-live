@@ -1,6 +1,6 @@
 .home {
   min-height: 100%;
-  padding-bottom: var(--space-1);
+  padding-bottom: 120px;
   background: var(--bg-good);
   transition: background var(--dur-mid) var(--ease-soft);
 }

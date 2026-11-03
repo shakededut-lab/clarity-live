@@ -1,19 +1,22 @@
 .nav-bar {
-  position: sticky;
-  bottom: var(--space-5);
-  z-index: 5;
+  /* Same spot on every screen. Fixed to the phone frame (the frame creates the containing block). */
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  z-index: 10;
   display: flex;
   justify-content: center;
-  margin-top: var(--space-4);
-  padding-bottom: 0;
   pointer-events: none;
 }
 
 .nav-bar ul {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
   height: 64px;
+  width: 296px;
+  justify-content: center;
   margin: 0;
   padding: 0 var(--space-3);
   list-style: none;
@@ -28,16 +31,14 @@
 .nav-bar__item {
   display: grid;
   place-items: center;
-  min-width: 56px;
+  width: 64px;
   height: 56px;
-  padding: 0 var(--space-2);
   border-radius: var(--radius-pill);
   color: var(--text-on-dark);
   transition: background var(--dur-fast) var(--ease-soft);
 }
 
 .nav-bar__item.is-active {
-  min-width: 72px;
   background: var(--grad-light-soft);
   box-shadow: var(--shadow-pill);
   color: var(--text-on-light);
