@@ -19,7 +19,7 @@ export function createInfoBanner({ iconName, text, actionLabel, onAction }) {
  * Soft bottom sheet for errors (research: keep context, light humor, always offer help).
  * Returns { node, open(), close() }.
  */
-export function createBottomSheet({ title, body, actionLabel, onAction, iconName }) {
+export function createBottomSheet({ title, body, actionLabel, onAction, iconName, content }) {
   const titleId = `sheet-${Math.random().toString(36).slice(2, 8)}`;
   const action = el('button', { class: 'btn-primary', onclick: onAction }, actionLabel);
   const panel = el(
@@ -28,7 +28,8 @@ export function createBottomSheet({ title, body, actionLabel, onAction, iconName
     el('span', { class: 'sheet__handle', 'aria-hidden': 'true' }),
     iconName && el('span', { class: 'sheet__icon' }, icon(iconName, 32)),
     el('h2', { class: 'sheet__title', id: titleId }, title),
-    el('p', { class: 'sheet__body' }, body),
+    body && el('p', { class: 'sheet__body' }, body),
+    content,
     action,
   );
   const scrim = el('div', { class: 'sheet__scrim' });

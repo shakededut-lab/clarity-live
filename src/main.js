@@ -13,8 +13,9 @@ import { renderHome } from './screens/home/home.js';
 import { renderGoDeeper } from './screens/go-deeper/go-deeper.js';
 import { renderCompanionScreen } from './screens/companion/companion-screen.js';
 import { renderChat } from './screens/chat/chat-screen.js';
+import { renderLibrary } from './screens/library/library.js';
 
-const SCREENS = { home: renderHome, health: renderGoDeeper, companion: renderCompanionScreen, chat: renderChat };
+const SCREENS = { home: renderHome, health: renderGoDeeper, companion: renderCompanionScreen, chat: renderChat, library: renderLibrary };
 
 const DEMO_GROUPS = [
   { key: 'day', legend: 'Day', options: [['good', 'Good day'], ['hard', 'Hard day']] },

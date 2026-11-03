@@ -24,10 +24,17 @@ import run from '@material-symbols/svg-400/rounded/directions_run.svg?raw';
 import yoga from '@material-symbols/svg-400/rounded/self_improvement.svg?raw';
 import send from '@material-symbols/svg-400/rounded/send-fill.svg?raw';
 import back from '@material-symbols/svg-400/rounded/arrow_back_ios_new.svg?raw';
+import chevronDown from '@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?raw';
+import check from '@material-symbols/svg-400/rounded/check.svg?raw';
+import tennis from '@material-symbols/svg-400/rounded/sports_tennis.svg?raw';
+import music from '@material-symbols/svg-400/rounded/music_note.svg?raw';
+import fire from '@material-symbols/svg-400/rounded/local_fire_department.svg?raw';
+import libraryFill from '@material-symbols/svg-400/rounded/video_library-fill.svg?raw';
 
 const ICONS = {
   home, homeFill, library, heart, heartFill, help, lock, menu, star, close, wifiOff, bedtimeOff, add,
   battery, dumbbell, barChart, bolt, footprint, cardiology, bedtime, bike, run, yoga, send, back,
+  chevronDown, check, tennis, music, fire, libraryFill,
 };
 
 /** Returns a decorative icon element. Give the parent button an aria-label. */

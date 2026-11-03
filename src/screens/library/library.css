@@ -1,0 +1,240 @@
+.library {
+  min-height: 100%;
+  padding: 64px var(--space-4) 120px;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.library :focus-visible {
+  outline-color: var(--text-on-dark);
+}
+
+.library__title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.library__why {
+  margin-top: var(--space-1);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.library .info-banner {
+  margin: var(--space-2) 0 0;
+  background: rgba(251, 244, 207, 0.12);
+}
+
+/* Today's picks: swipe sideways, snaps card by card */
+.library__recs {
+  display: flex;
+  gap: var(--space-3);
+  margin: var(--space-3) calc(-1 * var(--space-4)) 0;
+  padding: 0 var(--space-4) var(--space-2);
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-4);
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.library__recs li {
+  scroll-snap-align: start;
+  flex: none;
+}
+
+.library__by {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.library__subtitle {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.library__filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap);
+  padding: 0 var(--space-2) 0 var(--space-4);
+  border: 1px solid var(--light-yellow);
+  border-radius: var(--radius-pill);
+  color: var(--text-on-dark);
+  font-size: var(--fs-lg);
+}
+
+.library__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Workout card: photo on one side, fading into the card color */
+.w-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 112px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--card);
+  color: var(--text-on-light);
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.w-card--dark {
+  color: var(--text-on-dark);
+}
+
+.w-card--rec {
+  width: 272px;
+  height: 100%;
+  flex-direction: row-reverse;
+}
+
+.w-card--rec .w-card__media {
+  width: 84px;
+}
+
+.w-card__media {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 104px;
+  color: rgba(27, 27, 27, 0.35);
+}
+
+.w-card--dark .w-card__media {
+  color: rgba(251, 244, 207, 0.4);
+}
+
+.w-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The fade from photo to card color, like the Figma */
+.w-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, var(--card), transparent 70%);
+}
+
+.w-card--rec .w-card__media::after {
+  background: linear-gradient(to right, var(--card), transparent 70%);
+}
+
+.w-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+}
+
+.w-card__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.w-card__text {
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+}
+
+.w-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-1);
+}
+
+/* Tags: dark text on a soft chip (the Figma's light-gray text failed contrast) */
+.w-card__tag,
+.w-card__added {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 22px;
+  padding: 0 var(--space-2);
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  background: rgba(27, 27, 27, 0.12);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.w-card--dark .w-card__tag {
+  background: rgba(251, 244, 207, 0.18);
+}
+
+.w-card__tag.is-match {
+  border-color: currentColor;
+  font-weight: 700;
+}
+
+.w-card__added {
+  background: var(--bg-dark);
+  color: var(--light-yellow);
+}
+
+.w-card__added[hidden] {
+  display: none;
+}
+
+/* Goal picker inside the sheet */
+.goal-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.goal-option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.goal-option span {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--light-yellow);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.goal-option input:checked + span {
+  background: var(--grad-light);
+  color: var(--text-on-light);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.goal-option input:focus-visible + span {
+  outline: 3px solid var(--text-on-dark);
+  outline-offset: 2px;
+}
+
+.library[data-state='offline'] > :not(.nav-bar) {
+  opacity: 0.6;
+}
