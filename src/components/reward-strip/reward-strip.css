@@ -1,9 +1,10 @@
 .reward-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-3);
+  /* Figma: four 62px cards, centered, 23px apart */
+  display: flex;
+  justify-content: center;
+  gap: 23px;
   margin: 0;
-  padding: var(--space-4) var(--space-4) 0;
+  padding: var(--space-4) var(--space-3) 0;
   list-style: none;
 }
 
@@ -13,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 62px;
   height: 98px;
   padding: var(--space-2) 2px;
   border: 3px solid var(--light-yellow);

@@ -48,8 +48,9 @@ export function createGoalCard(goal) {
       'button',
       { class: 'goal-card__btn', 'aria-label': label },
       el('span', { class: 'goal-card__name' }, name),
-      el('span', { class: 'goal-card__dial' }, ring(value / target, id), valueLabel(goal)),
-      el('span', { class: 'goal-card__target' }, `of ${target}${unit ? ' ' + unit : ''}`),
+      el('span', { class: 'goal-card__dial' }, ring(value / target, id),
+        el('span', { class: 'goal-card__inner' }, valueLabel(goal),
+          el('span', { class: 'goal-card__target' }, `of ${target}`))),
     ),
   );
 }

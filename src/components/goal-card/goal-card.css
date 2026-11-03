@@ -1,11 +1,14 @@
 .goal-list {
-  /* Three goals, three equal columns, same edges as every other section */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Figma: 132px square cards in a row that scrolls sideways, 16px gap and edges */
+  display: flex;
   gap: var(--space-3);
   margin: 0;
-  padding: var(--space-1) var(--space-4) var(--space-2);
+  padding: var(--space-1) var(--space-3) var(--space-2);
   list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-3);
+  scrollbar-width: none;
 }
 
 .goal-list::-webkit-scrollbar {
@@ -13,16 +16,18 @@
 }
 
 .goal-card {
-  min-width: 0;
+  flex: none;
+  scroll-snap-align: start;
 }
 
 .goal-card__btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
-  width: 100%;
-  padding: var(--space-2) var(--space-1) var(--space-3);
+  gap: var(--space-2);
+  width: 132px;
+  height: 132px;
+  padding: var(--space-3) var(--space-2) 0;
   border-radius: var(--radius-small);
   background: var(--bg-dark);
   color: var(--text-on-dark);
@@ -35,8 +40,8 @@
 }
 
 .goal-card__target {
-  font-size: 0.75rem;
-  opacity: 0.85;
+  font-size: 0.6875rem;
+  font-weight: 500;
 }
 
 .goal-card__dial {
@@ -67,11 +72,19 @@
   stroke-linecap: round;
 }
 
+.goal-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
 .goal-card__value {
   display: flex;
   align-items: baseline;
   gap: 1px;
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -85,12 +98,8 @@
   font-weight: 600;
 }
 
-.goal-card--add {
-  grid-column: 1 / -1;
-}
-
 .goal-card--add .goal-card__btn {
-  min-height: 120px;
+
   justify-content: center;
   border: 2px dashed var(--light-yellow);
   background: rgba(27, 27, 27, 0.85);
