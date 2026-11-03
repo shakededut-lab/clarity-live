@@ -41,7 +41,7 @@
 /* Speech bubble with the gradient border from the Figma */
 .companion-screen__talk {
   position: absolute;
-  top: calc(50% - 150px + 64px);
+  top: calc(50% - 150px - 8px);
   right: -16px;
   max-width: 180px;
   min-height: var(--tap);
