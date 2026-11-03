@@ -1,0 +1,78 @@
+.stat-row {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.stat-row::-webkit-scrollbar {
+  display: none;
+}
+
+.stat-card {
+  flex: 0 0 196px;
+  min-height: 116px;
+  padding: var(--space-2) var(--space-3) var(--space-2);
+  border-radius: var(--radius-card);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-card__title {
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+/* 44px tap target around a 22px icon */
+.stat-card__help {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  margin: -10px -12px -10px 0;
+  color: var(--text-on-dark);
+}
+
+.stat-card__chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: var(--space-1);
+  overflow: visible;
+}
+
+.stat-card__grid {
+  stroke: rgba(251, 244, 207, 0.15);
+  stroke-width: 0.5;
+}
+
+.stat-card__line {
+  fill: none;
+  stroke: var(--light-pink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px rgba(230, 171, 177, 0.7));
+}
+
+.stat-card__days {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  font-size: 0.5625rem;
+  opacity: 0.8;
+}
+
+.stat-card__empty {
+  margin-top: var(--space-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  opacity: 0.85;
+}

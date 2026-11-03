@@ -1,0 +1,53 @@
+.reward-strip {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-4) var(--space-3) 0;
+  list-style: none;
+}
+
+.reward {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 64px;
+  height: 98px;
+  padding: var(--space-2) 2px;
+  border: 3px solid var(--light-yellow);
+  border-radius: var(--radius-small);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  box-shadow: var(--shadow-card);
+  font-size: var(--fs-xs);
+}
+
+.reward__title {
+  font-weight: 700;
+}
+
+.reward__art {
+  width: 44px;
+  height: 44px;
+}
+
+.reward__caption {
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.reward--new {
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.reward--locked {
+  display: grid;
+  place-items: center;
+  border-color: transparent;
+  background: var(--locked);
+  color: var(--text-muted);
+  box-shadow: none;
+}

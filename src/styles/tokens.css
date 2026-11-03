@@ -1,0 +1,69 @@
+/* Design tokens from DESIGN.md (Clarity Figma style guide). Change a value here, it updates everywhere. */
+:root {
+  /* Color */
+  --bg-dark: #1b1b1b;
+  --bg-light: #fffae7;
+  --text-on-dark: #fbf4cf;
+  --text-on-light: #1b1b1b;
+  --text-gold: #e8c68c;
+  --text-brown: #996633;
+  --text-muted: #85837b;
+  --border-soft: #cecab0;
+  --handle: #898989;
+  --track: #4a4945;
+  --card-cream: #fbf4cf;
+  --card-blue: #c0cedd;
+  --badge: #f2e6b3;
+  --locked: #dad4af;
+  --glass: rgba(245, 237, 202, 0.2);
+  --glass-nav: rgba(27, 27, 27, 0.6); /* Figma: 0.3, darkened so icons pass 3:1 */
+  --scrim: rgba(27, 27, 27, 0.4);
+  --light-yellow: #eadc6d;
+  --light-pink: #e6abb1;
+
+  --grad-light: linear-gradient(130deg, var(--light-yellow) 30%, var(--light-pink) 93%);
+  --grad-light-soft: linear-gradient(127deg, rgba(234, 220, 109, 0.44) 9%, rgba(230, 171, 177, 0.44) 87%);
+
+  /* Day themes (Home background) */
+  --bg-good: linear-gradient(180deg, #97ccbd 0%, #fbf4cf 100%);
+  --bg-hard: linear-gradient(180deg, #d4a3a5 0%, #fbf4cf 100%);
+
+  /* Type */
+  --font: 'Montserrat', system-ui, sans-serif;
+  --fs-xs: 0.625rem;   /* 10 */
+  --fs-sm: 0.875rem;   /* 14 */
+  --fs-md: 1rem;       /* 16 */
+  --fs-lg: 1.25rem;    /* 20 */
+  --fs-xl: 1.5rem;     /* 24 */
+  --fs-score: 2rem;    /* 32 */
+
+  /* Spacing: 4/8 scale (decision 5) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+
+  /* Shape */
+  --radius-pill: 60px;
+  --radius-card: 16px;
+  --radius-sheet: 20px;
+  --radius-small: 12px;
+
+  /* Depth */
+  --shadow-card: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --shadow-pill: 0 4px 4px rgba(0, 0, 0, 0.12);
+  --shadow-nav: 0 4px 3px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 8px rgba(234, 220, 109, 0.4), 0 4px 4px rgba(0, 0, 0, 0.4);
+
+  /* Motion */
+  --dur-fast: 200ms;
+  --dur-mid: 300ms;
+  --ease-soft: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Device */
+  --phone-w: 402px;
+  --phone-h: 874px;
+  --tap: 44px;
+}

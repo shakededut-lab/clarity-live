@@ -1,0 +1,25 @@
+.home {
+  min-height: 100%;
+  padding-bottom: var(--space-1);
+  background: var(--bg-good);
+  transition: background var(--dur-mid) var(--ease-soft);
+}
+
+.home[data-day='hard'] {
+  background: var(--bg-hard);
+}
+
+.home__section {
+  margin-top: var(--space-4);
+}
+
+.home__title {
+  padding: 0 var(--space-4) var(--space-2);
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+/* Offline: last known data stays visible, slightly faded, behind the sheet. */
+.home[data-state='offline'] > :not(.nav-bar) {
+  opacity: 0.6;
+}

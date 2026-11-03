@@ -1,0 +1,128 @@
+/* Info banner */
+.info-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-2) var(--space-3) 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-card);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+
+.info-banner p {
+  flex: 1;
+}
+
+.info-banner__action {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  color: var(--light-yellow);
+  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* Primary button: the signature gradient pill */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--grad-light);
+  color: var(--text-on-light);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+}
+
+.btn-primary:focus-visible {
+  outline-color: var(--text-on-dark);
+}
+
+/* Bottom sheet */
+.sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+
+.sheet__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+}
+
+.sheet__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-6);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  text-align: center;
+}
+
+.sheet__handle {
+  width: 120px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--handle);
+}
+
+.sheet__icon {
+  color: var(--light-yellow);
+  margin-top: var(--space-2);
+}
+
+.sheet__title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.sheet__body {
+  max-width: 300px;
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 100%;
+  padding: var(--space-6) var(--space-5);
+  background: var(--bg-light);
+}
+
+.loading__bar {
+  width: 264px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: #d9d4bd;
+  overflow: hidden;
+}
+
+.loading__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--light-yellow);
+}
+
+.loading__line {
+  color: var(--text-brown);
+  font-weight: 600;
+}

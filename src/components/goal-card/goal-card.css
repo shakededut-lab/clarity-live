@@ -1,0 +1,97 @@
+.goal-list {
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-3);
+  scrollbar-width: none;
+}
+
+.goal-list::-webkit-scrollbar {
+  display: none;
+}
+
+.goal-card {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.goal-card__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 132px;
+  height: 132px;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-small);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  box-shadow: var(--shadow-card);
+}
+
+.goal-card__name {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.goal-card__dial {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+}
+
+.goal-card__ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.goal-card__track,
+.goal-card__progress {
+  fill: none;
+  stroke-width: 8;
+}
+
+.goal-card__track {
+  stroke: var(--track);
+}
+
+.goal-card__progress {
+  stroke-linecap: round;
+}
+
+.goal-card__value {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.goal-card__value strong {
+  color: var(--light-yellow);
+}
+
+.goal-card__value small {
+  font-size: var(--fs-xs);
+}
+
+.goal-card__value--stacked {
+  display: flex;
+  flex-direction: column;
+}
+
+.goal-card__value--stacked span {
+  font-size: 0.75rem;
+}
+
+.goal-card--add .goal-card__btn {
+  justify-content: center;
+  border: 2px dashed var(--light-yellow);
+  background: rgba(27, 27, 27, 0.85);
+}

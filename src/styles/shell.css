@@ -1,0 +1,57 @@
+/* The page around the app: demo controls + phone frame on desktop, full screen on phones. */
+.shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-3);
+}
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: var(--phone-w);
+  height: var(--phone-h);
+  max-height: calc(100dvh - 32px);
+  border-radius: 48px;
+  overflow: hidden;
+  box-shadow: 0 0 0 10px #1b1b1b, 0 30px 60px rgba(0, 0, 0, 0.35);
+  isolation: isolate;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .shell {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-6);
+    min-height: 100dvh;
+  }
+}
+
+/* On a real phone the app fills the screen and the demo bar sits above it. */
+@media (max-width: 480px) {
+  .shell {
+    padding: 0;
+    gap: 0;
+  }
+  .phone {
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
