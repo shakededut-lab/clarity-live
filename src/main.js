@@ -11,8 +11,10 @@ import { el } from './utils/dom.js';
 import { createDemoPanel } from './components/demo-panel/demo-panel.js';
 import { renderHome } from './screens/home/home.js';
 import { renderGoDeeper } from './screens/go-deeper/go-deeper.js';
+import { renderCompanionScreen } from './screens/companion/companion-screen.js';
+import { renderChat } from './screens/chat/chat-screen.js';
 
-const SCREENS = { home: renderHome, health: renderGoDeeper };
+const SCREENS = { home: renderHome, health: renderGoDeeper, companion: renderCompanionScreen, chat: renderChat };
 
 const DEMO_GROUPS = [
   { key: 'day', legend: 'Day', options: [['good', 'Good day'], ['hard', 'Hard day']] },

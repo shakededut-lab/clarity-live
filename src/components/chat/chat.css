@@ -1,0 +1,108 @@
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bubble {
+  position: relative;
+  max-width: 82%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sheet);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Clarity speaks in the signature light; tail bottom-left like the Figma. */
+.bubble--clarity {
+  align-self: flex-start;
+  background: linear-gradient(90deg, var(--light-yellow), var(--light-pink));
+  color: var(--text-on-light);
+  border-bottom-left-radius: 4px;
+}
+
+.bubble--me {
+  align-self: flex-end;
+  background: var(--bg-light);
+  color: var(--text-on-light);
+  border-bottom-right-radius: 4px;
+}
+
+.typing {
+  display: flex;
+  gap: 6px;
+  padding: var(--space-3) var(--space-4);
+}
+
+.typing__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-on-light);
+  opacity: 0.6;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--bg-light);
+  border-radius: var(--radius-pill);
+  color: var(--bg-light);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-align: left;
+}
+
+.chip:hover {
+  background: rgba(255, 250, 231, 0.12);
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border-radius: var(--radius-sheet);
+  background: rgba(255, 250, 231, 0.2);
+  box-shadow: var(--shadow-card);
+}
+
+.composer__input {
+  flex: 1;
+  min-height: var(--tap);
+  border: 0;
+  background: transparent;
+  color: var(--bg-light);
+  font: 500 var(--fs-md) var(--font);
+}
+
+.composer__input::placeholder {
+  color: rgba(255, 250, 231, 0.75);
+}
+
+.composer__input:focus {
+  outline: none;
+}
+
+.composer:focus-within {
+  box-shadow: 0 0 0 2px var(--light-yellow);
+}
+
+.composer__send {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  color: var(--light-yellow);
+}

@@ -16,7 +16,7 @@ const ITEMS = [
 ];
 
 /** Floating pill navigation. Screens not built yet are marked "coming soon". */
-export function createNavBar({ active = 'home', available = ['home', 'health'], onNavigate, tone = 'light' } = {}) {
+export function createNavBar({ active = 'home', available = ['home', 'health', 'companion'], onNavigate, tone = 'light' } = {}) {
   const buttons = ITEMS.map(({ id, label, render }) => {
     const isActive = id === active;
     const isAvailable = available.includes(id);

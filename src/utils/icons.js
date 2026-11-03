@@ -22,10 +22,12 @@ import bedtime from '@material-symbols/svg-400/rounded/bedtime-fill.svg?raw';
 import bike from '@material-symbols/svg-400/rounded/directions_bike.svg?raw';
 import run from '@material-symbols/svg-400/rounded/directions_run.svg?raw';
 import yoga from '@material-symbols/svg-400/rounded/self_improvement.svg?raw';
+import send from '@material-symbols/svg-400/rounded/send-fill.svg?raw';
+import back from '@material-symbols/svg-400/rounded/arrow_back_ios_new.svg?raw';
 
 const ICONS = {
   home, homeFill, library, heart, heartFill, help, lock, menu, star, close, wifiOff, bedtimeOff, add,
-  battery, dumbbell, barChart, bolt, footprint, cardiology, bedtime, bike, run, yoga,
+  battery, dumbbell, barChart, bolt, footprint, cardiology, bedtime, bike, run, yoga, send, back,
 };
 
 /** Returns a decorative icon element. Give the parent button an aria-label. */

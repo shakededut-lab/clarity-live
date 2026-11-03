@@ -1,0 +1,65 @@
+.companion-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  padding: 88px var(--space-4) var(--space-1);
+  background: linear-gradient(180deg, var(--bg-light) 0%, #fdf3c4 100%);
+  text-align: center;
+}
+
+.companion-screen[data-day='hard'] {
+  background: linear-gradient(180deg, #f6e3e1 0%, var(--bg-light) 100%);
+}
+
+.companion-screen__insight {
+  max-width: 280px;
+  font-size: var(--fs-md);
+  line-height: 1.4;
+}
+
+.companion-screen__stage {
+  position: relative;
+  margin-top: var(--space-5);
+}
+
+/* Speech bubble with the gradient border from the Figma */
+.companion-screen__talk {
+  position: absolute;
+  top: 24px;
+  right: -16px;
+  min-height: var(--tap);
+  padding: var(--space-3) var(--space-3);
+  border: 2px solid transparent;
+  border-radius: var(--radius-sheet) var(--radius-sheet) var(--radius-sheet) 4px;
+  background:
+    linear-gradient(90deg, #fbf4cf, #f2d6d4) padding-box,
+    linear-gradient(90deg, var(--light-yellow), #c541c9) border-box;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+}
+
+.companion-screen__beams {
+  margin-top: var(--space-4);
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--text-brown);
+  color: var(--bg-light);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.companion-screen[data-state='offline'] > :not(.nav-bar) {
+  opacity: 0.6;
+}
+
+/* Keep the floating nav at the bottom even when content is short */
+.companion-screen .nav-bar {
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
