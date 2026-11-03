@@ -7,7 +7,8 @@ import { createGoalList } from '../../components/goal-card/goal-card.js';
 import { createStatCard } from '../../components/stat-card/stat-card.js';
 import { createRewardStrip } from '../../components/reward-strip/reward-strip.js';
 import { createNavBar } from '../../components/nav-bar/nav-bar.js';
-import { createBottomSheet, createInfoBanner, createLoadingView } from '../../components/feedback/feedback.js';
+import { createInfoBanner, createLoadingView } from '../../components/feedback/feedback.js';
+import { mount, openInfoSheet, showOffline } from '../shared.js';
 import './home.css';
 
 /**
@@ -15,11 +16,11 @@ import './home.css';
  * day:   'good' | 'hard'
  * state: 'success' | 'loading' | 'firstDay' | 'noSleep' | 'offline'
  */
-export function renderHome(screen, { day, state, onRetry }) {
+export function renderHome(screen, { day, state, onRetry, onNavigate }) {
   if (state === 'loading') return mount(screen, createLoadingView());
 
   const data = dataFor(day, state);
-  const header = createScoreHeader({ ...data, onOpen: data.score == null ? null : () => {} });
+  const header = createScoreHeader({ ...data, onOpen: data.score == null ? null : () => onNavigate('health') });
 
   const page = el(
     'main',
@@ -31,7 +32,7 @@ export function renderHome(screen, { day, state, onRetry }) {
     section('Your goals', createGoalList(data.goals)),
     section('Weekly stats', el('div', { class: 'stat-row' }, statCards(screen, data))),
     createRewardStrip(data.rewards),
-    createNavBar({ active: 'home' }),
+    createNavBar({ active: 'home', onNavigate }),
   );
 
   const view = mount(screen, { node: page, destroy: header.companion.destroy });
@@ -74,20 +75,5 @@ function summary(name, values) {
 }
 
 function openHelp(screen, key) {
-  const sheet = createBottomSheet({ ...HELP[key], actionLabel: 'Got it', onAction: () => sheet.close() });
-  screen.append(sheet.node);
-  sheet.open();
-}
-
-function showOffline(screen, onRetry) {
-  const { title, body, action } = STATES.offline;
-  const sheet = createBottomSheet({ title, body, iconName: 'wifiOff', actionLabel: action, onAction: () => { sheet.close(); onRetry?.(); } });
-  screen.append(sheet.node);
-  sheet.open();
-}
-
-function mount(screen, view) {
-  screen.replaceChildren(view.node);
-  screen.scrollTop = 0;
-  return view;
+  openInfoSheet(screen, HELP[key]);
 }

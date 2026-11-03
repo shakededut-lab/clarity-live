@@ -10,6 +10,9 @@ import './styles/shell.css';
 import { el } from './utils/dom.js';
 import { createDemoPanel } from './components/demo-panel/demo-panel.js';
 import { renderHome } from './screens/home/home.js';
+import { renderGoDeeper } from './screens/go-deeper/go-deeper.js';
+
+const SCREENS = { home: renderHome, health: renderGoDeeper };
 
 const DEMO_GROUPS = [
   { key: 'day', legend: 'Day', options: [['good', 'Good day'], ['hard', 'Hard day']] },
@@ -27,20 +30,31 @@ const DEMO_GROUPS = [
 ];
 
 const params = new URLSearchParams(location.search);
-const ui = { day: params.get('day') || 'good', state: params.get('state') || 'success' };
+const ui = {
+  screen: params.get('screen') || 'home',
+  day: params.get('day') || 'good',
+  state: params.get('state') || 'success',
+};
 
-const screen = el('div', { class: 'screen' });
+const screen = el('div', { class: 'screen', tabindex: '-1', 'aria-live': 'off' });
 const phone = el('div', { class: 'phone' }, screen);
 let view = null;
 
 function render() {
   view?.destroy?.();
-  view = renderHome(screen, { ...ui, onRetry: retry });
+  const renderScreen = SCREENS[ui.screen] || renderHome;
+  view = renderScreen(screen, { ...ui, onRetry: retry, onNavigate: navigate });
+}
+
+/** Moving between screens: render, then put keyboard focus at the top of the new screen. */
+function navigate(id) {
+  update({ screen: id });
+  screen.focus({ preventScroll: true });
 }
 
 function update(patch) {
   Object.assign(ui, patch);
-  history.replaceState(null, '', `?day=${ui.day}&state=${ui.state}`);
+  history.replaceState(null, '', `?screen=${ui.screen}&day=${ui.day}&state=${ui.state}`);
   render();
 }
 

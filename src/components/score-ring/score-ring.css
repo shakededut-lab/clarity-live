@@ -1,0 +1,34 @@
+.score-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 104px;
+  height: 104px;
+  flex: none;
+}
+
+.score-ring__svg {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.score-ring__track,
+.score-ring__progress {
+  fill: none;
+  stroke-width: 7;
+}
+
+.score-ring__track {
+  stroke: rgba(251, 244, 207, 0.15);
+}
+
+.score-ring__progress {
+  stroke-linecap: round;
+}
+
+.score-ring__number {
+  font-size: 2.125rem;
+  font-weight: 700;
+  color: var(--text-on-dark);
+}

@@ -12,11 +12,11 @@ const ITEMS = [
     label: 'Companion',
     render: () => el('img', { class: 'nav-bar__companion', src: `${base}companion/glow.webp`, alt: '' }),
   },
-  { id: 'health', label: 'Health', render: () => icon('heart', 36) },
+  { id: 'health', label: 'Health', render: (active) => icon(active ? 'heartFill' : 'heart', 36) },
 ];
 
 /** Floating pill navigation. Screens not built yet are marked "coming soon". */
-export function createNavBar({ active = 'home', available = ['home'], onNavigate } = {}) {
+export function createNavBar({ active = 'home', available = ['home', 'health'], onNavigate, tone = 'light' } = {}) {
   const buttons = ITEMS.map(({ id, label, render }) => {
     const isActive = id === active;
     const isAvailable = available.includes(id);
@@ -37,5 +37,5 @@ export function createNavBar({ active = 'home', available = ['home'], onNavigate
     );
   });
 
-  return el('nav', { class: 'nav-bar', 'aria-label': 'Main' }, el('ul', { role: 'list' }, buttons));
+  return el('nav', { class: `nav-bar nav-bar--${tone}`, 'aria-label': 'Main' }, el('ul', { role: 'list' }, buttons));
 }

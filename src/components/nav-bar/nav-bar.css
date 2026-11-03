@@ -47,3 +47,8 @@
   width: 46px;
   height: 46px;
 }
+
+/* On dark screens the glass turns cream (Figma variant). */
+.nav-bar--dark ul {
+  background: rgba(251, 244, 207, 0.2);
+}

@@ -1,0 +1,50 @@
+.deeper {
+  min-height: 100%;
+  padding: 64px var(--space-4) var(--space-1);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.deeper :focus-visible {
+  outline-color: var(--text-on-dark);
+}
+
+.deeper__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.deeper__title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.deeper__summary {
+  margin-top: var(--space-2);
+  font-size: var(--fs-md);
+  line-height: 1.4;
+}
+
+.deeper__term {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--light-yellow);
+  text-underline-offset: 3px;
+}
+
+.deeper__body {
+  margin-top: var(--space-5);
+}
+
+.deeper__empty {
+  padding: var(--space-4);
+  border: 2px dashed var(--border-soft);
+  border-radius: var(--radius-card);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+
+.deeper[data-state='offline'] > :not(.nav-bar) {
+  opacity: 0.6;
+}
