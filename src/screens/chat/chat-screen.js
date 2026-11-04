@@ -11,7 +11,7 @@ const TYPING_MS = 700;
 
 /** Scripted chat with Clarity. Works offline because every answer lives in the app. */
 export function renderChat(screen, { day, state, onNavigate }) {
-  const companion = createCompanion({ size: 72, mood: day === 'hard' ? 'tired' : 'breathing' });
+  const companion = createCompanion({ size: 72, mood: day === 'hard' ? 'tired' : 'happy' });
   const log = el('ol', { class: 'chat-log', 'aria-live': 'polite', 'aria-label': 'Conversation' });
   const chipsSlot = el('div', { class: 'chat__chips' });
   const composer = createComposer((text) => userSays(text, matchTyped(text)));

@@ -19,7 +19,8 @@ import './home.css';
 export function renderHome(screen, { day, state, onRetry, onNavigate }) {
   if (state === 'loading') return mount(screen, createLoadingView());
 
-  const data = dataFor(day, state);
+  let data = dataFor(day, state);
+  if (state === 'offline') data = { ...data, mood: 'sad' }; // lost signal: the companion looks a little sad
   const header = createScoreHeader({ ...data, onOpen: data.score == null ? null : () => onNavigate('health') });
 
   const page = el(
@@ -46,7 +47,7 @@ function dataFor(day, state) {
   return {
     ...base,
     score: null,
-    mood: 'breathing',
+    mood: 'happy',
     headline: STATES.firstDay.headline,
     note: STATES.firstDay.note,
     goals: [],

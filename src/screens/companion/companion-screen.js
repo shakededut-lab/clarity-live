@@ -27,7 +27,7 @@ export function renderCompanionScreen(screen, { day, state, onRetry, onNavigate 
   if (state === 'loading') return mount(screen, createLoadingView());
 
   const key = INSIGHT[state] ? state : day;
-  const mood = state === 'firstDay' || state === 'noSleep' ? 'breathing' : day === 'hard' ? 'tired' : 'energized';
+  const mood = state === 'firstDay' ? 'happy' : state === 'noSleep' ? 'curious' : state === 'offline' ? 'sad' : day === 'hard' ? 'tired' : 'energized';
   const companion = createCompanion({ size: 300, mood, label: `Clarity, feeling ${mood}` });
   const talk = el('button', { class: 'companion-screen__talk', onclick: () => onNavigate('chat') }, BUBBLE[key] ?? BUBBLE.good);
 

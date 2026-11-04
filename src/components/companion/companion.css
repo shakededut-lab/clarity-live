@@ -5,23 +5,22 @@
   flex: none;
 }
 
+/* All layers share one square canvas, so they line up exactly. Slight zoom crops the empty margin. */
 .companion img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  transform-origin: 50% 45%;
+  transform: scale(1.12);
+  transform-origin: 50% 50%;
   user-select: none;
   pointer-events: none;
 }
 
-.companion__glow {
-  transition: filter var(--dur-mid) var(--ease-soft);
-}
-
-/* Hard day: the light goes pale, like the cloud in the Figma hard-day Home. */
-.companion[data-mood='tired'] .companion__glow {
-  filter: saturate(0.45) brightness(1.02);
+/* Black arms vanish on dark backgrounds: give them a soft light edge there. */
+.companion__armL,
+.companion__armR {
+  filter: drop-shadow(0 0 1.5px rgba(251, 244, 207, 0.9));
 }
 
 /* Sleepy z's: only on a tired (hard) day. Static when motion is reduced. */

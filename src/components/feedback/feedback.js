@@ -64,7 +64,7 @@ const LOADING_LINES = ['I’m working on it…', 'Final touches…', 'Can’t fi
 
 /** Loading: the companion "tidies up" while the bar fills, with playful lines. */
 export function createLoadingView() {
-  const companion = createCompanion({ size: 160, mood: 'breathing', label: 'Clarity is loading your day' });
+  const companion = createCompanion({ size: 160, mood: 'scholar', label: 'Clarity is loading your day' });
   const fill = el('span', { class: 'loading__fill' });
   const line = el('p', { class: 'loading__line', 'aria-live': 'polite' }, LOADING_LINES[0]);
   const node = el(
