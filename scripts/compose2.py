@@ -4,7 +4,13 @@ from collections import deque
 D='/mnt/project-files/clarity-live/companion/layers-v2/'
 cache={}
 def L(n):
-    if n not in cache: cache[n]=Image.open(D+n+'.png').convert('RGBA')
+    """Layer by name. 'name|mirror' flips it left-right (e.g. a right arm used as a left arm)."""
+    if n not in cache:
+        base,_,op=n.partition('|')
+        im=Image.open(D+base+'.png').convert('RGBA')
+        if op=='mirror': im=im.transpose(Image.FLIP_LEFT_RIGHT)
+        if op=='flip': im=im.transpose(Image.FLIP_TOP_BOTTOM)
+        cache[n]=im
     return cache[n]
 def body(n):
     """Bounding box of the main glow blob (largest connected area), ignoring floating bubbles."""
@@ -39,12 +45,17 @@ def layers(spec):
     """Returns separate positioned layers: glow, face, armL, armR (each full canvas)."""
     out={'glow':new(),'face':new(),'armL':new(),'armR':new()}
     out['glow'].alpha_composite(L(spec['glow']))
+    if spec.get('raw'):
+        # drawn together in Procreate: keep exactly as drawn
+        for part,names in spec['raw'].items():
+            for n in names: out[part].alpha_composite(L(n))
+        return out
     b=body(spec['glow']); bw=b[2]-b[0]; bh=b[3]-b[1]; cx=(b[0]+b[2])/2; cy=(b[1]+b[3])/2
     s_=bw/(ORIG[2]-ORIG[0])
     for arm in spec.get('arms') or []:
         ab=bbox_of([arm])
         ox=cx+(ab[0]-(ORIG[0]+ORIG[2])/2)*s_; oy=cy+(ab[1]-(ORIG[1]+ORIG[3])/2)*s_
-        place(out['armL' if 'left' in arm else 'armR'],[arm],ab,(ox,oy,ox+(ab[2]-ab[0])*s_,oy+(ab[3]-ab[1])*s_))
+        place(out['armL' if ('left' in arm) != ('mirror' in arm) else 'armR'],[arm],ab,(ox,oy,ox+(ab[2]-ab[0])*s_,oy+(ab[3]-ab[1])*s_))
     f=spec['face']; fb=bbox_of(f); fw=fb[2]-fb[0]; fh=fb[3]-fb[1]
     tw=bw*spec.get('fw',0.42); sc=tw/fw; th=fh*sc
     fx=cx-tw/2+spec.get('dx',0)*bw; fy=cy-th/2+spec.get('dy',-0.04)*bh
@@ -58,12 +69,17 @@ def compose(spec):
     o=layers(spec); c=new()
     for k in ('glow','armL','armR','face'): c.alpha_composite(o[k])
     return c
+# Matched to the Figma screens (Shaked, 2026-11-04). No star eyes.
 MOODS={
- 'energized':dict(glow='glow-bright',face=['eyes-star','mouth-grin'],arms=['arm-left-up','arm-right-up'],fw=0.46),
- 'happy':dict(glow='glow',face=['face-content'],arms=['arm-left-up','arm-right-down'],fw=0.36),
- 'tired':dict(glow='glow-pale',face=['eyes-sleepy'],mouth='mouth-wavy',mw=0.06,mgap=0.05,fw=0.34,dy=-0.06),
- 'sad':dict(glow='glow-pale',face=['eyes-sad','mouth-sad'],arms=['arm-right-down'],fw=0.42),
- 'calm':dict(glow='glow-cream',face=['face-calm'],arms=['arm-left-zen','arm-right-zen'],fw=0.34,dy=0.02),
+ # Figma "companion" screen: the original drawing, untouched
+ 'energized':dict(glow='glow',raw={'face':['face-arms-happy']}),
+ # Figma good-day Home + chat: bright glow, content smile, arms hanging
+ 'happy':dict(glow='glow-bright',face=['face-content'],arms=['arm-right-down|mirror','arm-right-down'],fw=0.40,dy=-0.08),
+ # Figma hard-day Home: cream cloud, worried brows, small frown, face high on the body
+ 'tired':dict(glow='glow-cream',face=['eyes-sad'],mouth='mouth-sad',mw=0.07,mgap=0.06,fw=0.46,dy=-0.16),
+ 'sad':dict(glow='glow-pale',face=['eyes-sad'],mouth='mouth-sad',mw=0.07,mgap=0.06,fw=0.46,dy=-0.12),
+ # Figma "meditate" reward: yellow glow, closed eyes, zen arms
+ 'calm':dict(glow='glow-bright',face=['face-calm'],arms=['arm-left-zen','arm-right-zen'],fw=0.34,dy=0.0),
  'scholar':dict(glow='glow-cream',face=['face-scholar'],fw=0.5,dy=-0.12),
  'curious':dict(glow='glow',face=['face-detective'],fw=0.45),
 }

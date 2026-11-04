@@ -21,35 +21,68 @@
 }
 
 .goal-card__btn {
+  /* Figma 475:1187: 132px dark square, name on top, 83px ring below */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
   width: 132px;
   height: 132px;
-  padding: var(--space-3) var(--space-2) 0;
-  border-radius: var(--radius-small);
+  padding: 14px 6px 0;
+  border-radius: 13px;
   background: var(--bg-dark);
   color: var(--text-on-dark);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
 
 .goal-card__name {
-  font-size: var(--fs-sm);
-  font-weight: 600;
-}
-
-.goal-card__target {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem; /* 13 */
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .goal-card__dial {
   position: relative;
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 84px;
+  width: 83px;
+  height: 83px;
+}
+
+.goal-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+}
+
+/* Lighter than the Figma's bold, at Shaked's request: semibold value, medium target */
+.goal-card__value {
+  font-size: 1rem; /* 16 */
+  font-weight: 600;
+  color: var(--text-on-dark);
+}
+
+.goal-card__value strong {
+  font-weight: 600;
+  color: var(--light-yellow);
+}
+
+.goal-card__value small {
+  font-size: 0.625rem; /* 10 */
+  font-weight: 500;
+  color: var(--light-yellow);
+}
+
+.goal-card__target {
+  font-size: 0.75rem; /* 12 */
+  font-weight: 500;
+}
+
+.goal-card__target small {
+  font-size: 0.5rem; /* 8 */
 }
 
 .goal-card__ring {
@@ -72,31 +105,6 @@
   stroke-linecap: round;
 }
 
-.goal-card__inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.goal-card__value {
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.goal-card__value strong {
-  color: var(--light-yellow);
-}
-
-.goal-card__value small {
-  font-size: 0.75rem;
-  font-weight: 600;
-}
 
 .goal-card--add .goal-card__btn {
 

@@ -9,7 +9,7 @@ const shared = {
   goals: [
     { id: 'running', name: 'Running', value: 2, target: 4, unit: '' },
     { id: 'dancing', name: 'Dancing', value: 73, target: 100, unit: 'min' },
-    { id: 'walking', name: 'Walk Rex', value: 23, target: 90, unit: 'km' },
+    { id: 'walking', name: 'Walking Rex', value: 23, target: 90, unit: 'km' },
   ],
   rewards: [
     { id: 'meditate', title: 'Meditate', caption: 'Tap here!', state: 'open' },
@@ -25,7 +25,7 @@ export const DAYS = {
     id: 'good',
     score: 82,
     headline: 'Making progress!',
-    mood: 'energized',
+    mood: 'happy', // Figma good-day Home: content smile
     hrv: [38, 62, 88, 70, 52, 58, 66],
     bpm: [52, 90, 30, 58, 40, 82, 96],
   },

@@ -34,8 +34,15 @@ function ring(progress, id) {
   );
 }
 
-function valueLabel({ value, unit }) {
-  return el('p', { class: 'goal-card__value' }, el('strong', {}, value), unit && el('small', {}, unit));
+/** Figma: "2/4" on one line, or "73min" over "100min". */
+function valueLabel({ value, target, unit }) {
+  if (!unit) {
+    return el('span', { class: 'goal-card__inner' },
+      el('span', { class: 'goal-card__value' }, el('strong', {}, value), `/${target}`));
+  }
+  return el('span', { class: 'goal-card__inner' },
+    el('span', { class: 'goal-card__value' }, el('strong', {}, value, el('small', {}, unit))),
+    el('span', { class: 'goal-card__target' }, target, el('small', {}, unit)));
 }
 
 export function createGoalCard(goal) {
@@ -48,9 +55,7 @@ export function createGoalCard(goal) {
       'button',
       { class: 'goal-card__btn', 'aria-label': label },
       el('span', { class: 'goal-card__name' }, name),
-      el('span', { class: 'goal-card__dial' }, ring(value / target, id),
-        el('span', { class: 'goal-card__inner' }, valueLabel(goal),
-          el('span', { class: 'goal-card__target' }, `of ${target}`))),
+      el('span', { class: 'goal-card__dial' }, ring(value / target, id), valueLabel(goal)),
     ),
   );
 }

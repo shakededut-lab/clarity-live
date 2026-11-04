@@ -22,21 +22,3 @@
 .companion__armR {
   filter: drop-shadow(0 0 1.5px rgba(251, 244, 207, 0.9));
 }
-
-/* Sleepy z's: only on a tired (hard) day. Static when motion is reduced. */
-.companion__zzz {
-  display: none;
-  position: absolute;
-  top: 18%;
-  left: -2%;
-  font-weight: 800;
-  color: var(--text-brown);
-  pointer-events: none;
-}
-.companion__zzz span {
-  display: inline-block;
-  font-size: calc(var(--size) * 0.07);
-}
-.companion__zzz span:nth-child(2) { font-size: calc(var(--size) * 0.09); transform: translateY(-40%); }
-.companion__zzz span:nth-child(3) { font-size: calc(var(--size) * 0.11); transform: translateY(-80%); }
-.companion[data-mood='tired'] .companion__zzz { display: block; }

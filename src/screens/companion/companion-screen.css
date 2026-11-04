@@ -9,7 +9,7 @@
 }
 
 .companion-screen[data-day='hard'] {
-  background: linear-gradient(180deg, #f6e3e1 0%, var(--bg-light) 100%);
+  background: var(--bg-hard); /* same pink as hard-day Home, so the pale cloud stays visible */
 }
 
 .companion-screen__insight {
